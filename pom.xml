@@ -5,7 +5,7 @@
 
 	<groupId>org.springframework.data</groupId>
 	<artifactId>spring-data-commons</artifactId>
-	<version>1.12.11.1.cosium-fork-SNAPSHOT</version>
+	<version>1.12.11.2.cosium-fork-SNAPSHOT</version>
 
 	<name>Spring Data Core</name>
 
@@ -272,6 +272,15 @@
 				<artifactId>asciidoctor-maven-plugin</artifactId>
 			</plugin>
 
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
+				<configuration>
+					<mavenExecutorId>forked-path</mavenExecutorId>
+					<localCheckout>true</localCheckout>
+					<pushChanges>false</pushChanges>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -321,6 +330,7 @@
 		<connection>scm:git:git://github.com/Cosium/spring-data-commons.git</connection>
 		<developerConnection>scm:git:git@github.com:Cosium/spring-data-commons.git</developerConnection>
 		<url>https://github.com/Cosium/spring-data-commons</url>
-	</scm>
+	  <tag>HEAD</tag>
+  </scm>
 
 </project>
