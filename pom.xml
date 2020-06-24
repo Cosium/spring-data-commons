@@ -21,6 +21,7 @@
 		<xmlbeam>1.4.23</xmlbeam>
 		<java-module-name>spring.data.commons</java-module-name>
 
+		<spring-hateoas>1.1.0.0.cosium</spring-hateoas>
 	</properties>
 
 	<dependencies>
@@ -222,7 +223,7 @@
 			<version>${vavr}</version>
 			<optional>true</optional>
 		</dependency>
-		
+
 		<!-- Eclipse Collections -->
 
 		<dependency>
