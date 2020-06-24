@@ -34,6 +34,7 @@
 		<xmlbeam>1.4.24</xmlbeam>
 		<java-module-name>spring.data.commons</java-module-name>
 
+		<spring-hateoas>2.0.0.1.cosium</spring-hateoas>
 	</properties>
 
 	<dependencies>
