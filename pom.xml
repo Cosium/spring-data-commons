@@ -5,7 +5,7 @@
 
 	<groupId>org.springframework.data</groupId>
 	<artifactId>spring-data-commons</artifactId>
-	<version>2.3.1.1.cosium-SNAPSHOT</version>
+	<version>2.3.1.1.cosium</version>
 
 	<name>Spring Data Core</name>
 
@@ -394,7 +394,7 @@
 		<connection>scm:git:git://github.com/cosium/spring-data-commons.git</connection>
 		<developerConnection>scm:git:git@github.com:cosium/spring-data-commons.git</developerConnection>
 		<url>https://github.com/cosium/spring-data-commons</url>
-	  <tag>HEAD</tag>
+	  <tag>spring-data-commons-2.3.1.1.cosium</tag>
   </scm>
 
 </project>
