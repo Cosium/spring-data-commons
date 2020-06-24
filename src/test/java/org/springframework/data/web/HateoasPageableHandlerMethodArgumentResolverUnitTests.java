@@ -21,7 +21,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.core.MethodParameter;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.hateoas.TemplateVariables;
 import org.springframework.hateoas.server.mvc.UriComponentsContributor;
+import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 /**
@@ -29,6 +31,7 @@ import org.springframework.web.util.UriComponentsBuilder;
  *
  * @author Oliver Gierke
  * @author Julien Béti
+ * @author Réda Housni Alaoui
  */
 class HateoasPageableHandlerMethodArgumentResolverUnitTests
 		extends PageableHandlerMethodArgumentResolverUnitTests {
@@ -114,6 +117,18 @@ class HateoasPageableHandlerMethodArgumentResolverUnitTests
 		getResolver().enhance(builder, null, Pageable.unpaged());
 
 		assertThat(builder).isEqualTo(builder);
+	}
+
+	@Test // DATACMNS-1752
+	void enhanceTemplateVariables() {
+
+		UriComponents uriComponents = UriComponentsBuilder.fromPath("/foo").build();
+
+		HateoasPageableHandlerMethodArgumentResolver resolver = getResolver();
+		resolver.setPageParameterName("foo");
+		String variables = resolver.enhance(TemplateVariables.NONE, uriComponents, null).toString();
+
+		assertThat(variables).isEqualTo("{?foo,size,sort*}");
 	}
 
 	@Override

@@ -22,6 +22,8 @@ import java.net.URI;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Sort;
+import org.springframework.hateoas.TemplateVariables;
+import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 /**
@@ -29,6 +31,7 @@ import org.springframework.web.util.UriComponentsBuilder;
  *
  * @author Oliver Gierke
  * @author Julien Béti
+ * @author Réda Housni Alaoui
  */
 class HateoasSortHandlerMethodArgumentResolverUnitTests extends SortHandlerMethodArgumentResolverUnitTests {
 
@@ -54,6 +57,15 @@ class HateoasSortHandlerMethodArgumentResolverUnitTests extends SortHandlerMetho
 
 		var resolver = new HateoasSortHandlerMethodArgumentResolver();
 		assertThat(resolver.getSortTemplateVariables(null, uriComponents).toString()).isEqualTo("{?sort*}");
+	}
+
+	@Test // DATACMNS-1752
+	void enhanceTemplateVariables(){
+
+		UriComponents uriComponents = UriComponentsBuilder.fromPath("/").build();
+
+		HateoasSortHandlerMethodArgumentResolver resolver = new HateoasSortHandlerMethodArgumentResolver();
+		assertThat(resolver.enhance(TemplateVariables.NONE, uriComponents, null).toString()).isEqualTo("{?sort*}");
 	}
 
 	private void assertUriStringFor(Sort sort, String expected) throws Exception {
