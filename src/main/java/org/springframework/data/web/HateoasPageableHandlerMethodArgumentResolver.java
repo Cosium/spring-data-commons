@@ -40,6 +40,7 @@ import org.springframework.web.util.UriComponentsBuilder;
  * @since 1.6
  * @author Oliver Gierke
  * @author Nick Williams
+ * @author Réda Housni Alaoui
  */
 @SuppressWarnings("null")
 public class HateoasPageableHandlerMethodArgumentResolver extends PageableHandlerMethodArgumentResolver
@@ -127,6 +128,11 @@ public class HateoasPageableHandlerMethodArgumentResolver extends PageableHandle
 				pageable.getPageSize() <= getMaxPageSize() ? pageable.getPageSize() : getMaxPageSize());
 
 		this.sortResolver.enhance(builder, parameter, pageable.getSort());
+	}
+
+	@Override
+	public TemplateVariables enhance(TemplateVariables templateVariables, UriComponents uriComponents, MethodParameter parameter) {
+		return templateVariables.concat(getPaginationTemplateVariables(parameter, uriComponents));
 	}
 
 	private static HateoasSortHandlerMethodArgumentResolver getDefaultedSortResolver(

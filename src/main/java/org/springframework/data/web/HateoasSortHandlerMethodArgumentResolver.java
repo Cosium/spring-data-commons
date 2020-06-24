@@ -36,6 +36,7 @@ import org.springframework.web.util.UriComponentsBuilder;
  * @author Oliver Gierke
  * @author Thomas Darimont
  * @author Nick Williams
+ * @author Réda Housni Alaoui
  */
 @SuppressWarnings("null")
 public class HateoasSortHandlerMethodArgumentResolver extends SortHandlerMethodArgumentResolver
@@ -82,5 +83,10 @@ public class HateoasSortHandlerMethodArgumentResolver extends SortHandlerMethodA
 		for (String expression : foldIntoExpressions(sort)) {
 			builder.queryParam(sortParameter, expression);
 		}
+	}
+
+	@Override
+	public TemplateVariables enhance(TemplateVariables templateVariables, UriComponents uriComponents, MethodParameter parameter) {
+		return templateVariables.concat(getSortTemplateVariables(parameter, uriComponents));
 	}
 }
