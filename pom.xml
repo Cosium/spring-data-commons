@@ -32,6 +32,7 @@
 		<scala>3.8.4</scala>
 		<xmlbeam>1.4.26</xmlbeam>
 		<java-module-name>spring.data.commons</java-module-name>
+		<spring-hateoas>3.1.0.1.cosium</spring-hateoas>
 	</properties>
 
 	<dependencies>
