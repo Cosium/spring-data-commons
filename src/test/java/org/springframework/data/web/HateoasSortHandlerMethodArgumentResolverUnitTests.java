@@ -55,7 +55,7 @@ class HateoasSortHandlerMethodArgumentResolverUnitTests extends SortHandlerMetho
 		var uriComponents = UriComponentsBuilder.fromPath("/").build();
 
 		var resolver = new HateoasSortHandlerMethodArgumentResolver();
-		assertThat(resolver.getSortTemplateVariables(null, uriComponents).toString()).isEqualTo("{?sort}");
+		assertThat(resolver.getSortTemplateVariables(null, uriComponents).toString()).isEqualTo("{?sort*}");
 	}
 
 	@Test // DATACMNS-1752
@@ -64,7 +64,7 @@ class HateoasSortHandlerMethodArgumentResolverUnitTests extends SortHandlerMetho
 		UriComponents uriComponents = UriComponentsBuilder.fromPath("/").build();
 
 		HateoasSortHandlerMethodArgumentResolver resolver = new HateoasSortHandlerMethodArgumentResolver();
-		assertThat(resolver.enhance(TemplateVariables.NONE, uriComponents, null).toString()).isEqualTo("{?sort}");
+		assertThat(resolver.enhance(TemplateVariables.NONE, uriComponents, null).toString()).isEqualTo("{?sort*}");
 	}
 
 	private void assertUriStringFor(Sort sort, String expected) throws Exception {

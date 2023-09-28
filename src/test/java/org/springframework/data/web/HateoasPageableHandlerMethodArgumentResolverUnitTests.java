@@ -72,10 +72,10 @@ class HateoasPageableHandlerMethodArgumentResolverUnitTests
 	@Test // DATACMNS-418
 	void appendsTemplateVariablesCorrectly() {
 
-		assertTemplateEnrichment("/foo", "{?page,size,sort}");
-		assertTemplateEnrichment("/foo?bar=1", "{&page,size,sort}");
-		assertTemplateEnrichment("/foo?page=1", "{&size,sort}");
-		assertTemplateEnrichment("/foo?page=1&size=10", "{&sort}");
+		assertTemplateEnrichment("/foo", "{?page,size,sort*}");
+		assertTemplateEnrichment("/foo?bar=1", "{&page,size,sort*}");
+		assertTemplateEnrichment("/foo?page=1", "{&size,sort*}");
+		assertTemplateEnrichment("/foo?page=1&size=10", "{&sort*}");
 		assertTemplateEnrichment("/foo?page=1&sort=foo,asc", "{&size}");
 		assertTemplateEnrichment("/foo?page=1&size=10&sort=foo,asc", "");
 	}
@@ -89,7 +89,7 @@ class HateoasPageableHandlerMethodArgumentResolverUnitTests
 		resolver.setPageParameterName("foo");
 		var variables = resolver.getPaginationTemplateVariables(null, uriComponents).toString();
 
-		assertThat(variables).isEqualTo("{?foo,size,sort}");
+		assertThat(variables).isEqualTo("{?foo,size,sort*}");
 	}
 
 	@Test // DATACMNS-563
@@ -127,7 +127,7 @@ class HateoasPageableHandlerMethodArgumentResolverUnitTests
 		resolver.setPageParameterName("foo");
 		String variables = resolver.enhance(TemplateVariables.NONE, uriComponents, null).toString();
 
-		assertThat(variables).isEqualTo("{?foo,size,sort}");
+		assertThat(variables).isEqualTo("{?foo,size,sort*}");
 	}
 
 	@Override
